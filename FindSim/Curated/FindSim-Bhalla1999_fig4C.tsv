@@ -10,17 +10,18 @@ journal
 		
 		
 Experiment context		
+exptType	TimeSeries	
 species		
 cell-types		
-temperature (Celsius)		
-Include pathway	Ca signaling	
-details	Bhalla_fig4C	
-notes	Time course experiment	
+temperature-in-Celsius		
+includePathway	Ca,PLCbeta,PLA2,PKC,PIP2,IP3,Ras,MAPK	
+details		
+notes		
 		
 Stimuli		
 timeUnits	sec	
 quantityUnits	uM	
-molecules	Ca	
+entities	Ca	
 field	conc	
 Data		
 Time	Value	
@@ -89,18 +90,17 @@ Time	Value
 2236	0.08	
 		
 Readouts		
-readoutType	Time-Series	
 timeUnits	sec	
 quantityUnits	uM	
-useRatio	FALSE	
 useXlog	FALSE	
 useYlog	FALSE	
-ratioReferenceTime	0	
-ratioReferenceEntity		
-molecules	MAPK_p_p	
-experimentalReadout	conc	
-useSum		
 useNormalization	FALSE	
+settleTime	0	
+ratioReferenceTime	0	
+ratioReferenceEntities		
+ratioReferenceDose	0	
+entities	MAPK_p_p	
+field	conc	
 Data		
 Time	Value	stderr
 600	0.0001	0
@@ -114,26 +114,25 @@ Time	Value	stderr
 4800	0.22	0
 		
 Model mapping		
-modelSource	Database	
-fileName		
+modelSource	Local path	
+fileName	models/synSynth7.g	
 citationId		
 citation		
 authors		
-modelSubset	kinetics/Ca,Phosphatase,Gprotein,kinetics/mGluR,AC,PKA,PP2B,kinetics/PLC_g,Ras,MAPK/MAPK,kinetics/MAPK/,PP1,kinetics/CaM,kinetics/CaMKII,kinetics/mGluRAntag,PLCbeta,PLA2,PKC,PIP2,temp_PIP2,IP3,kinetics/EGFR,kinetics/Sos,PC,AMP	
-stimulusMolecules	Ca/Ca	
-readoutMolecules	MAPK/MAPK_p_p	
+modelSubset	kinetics/Ca,Phosphatase,Gprotein,kinetics/mGluR,AC,PKA,PP2B,kinetics/PLC_g,Ras,MAPK/MAPK,kinetics/MAPK/,PP1,kinetics/CaM,kinetics/CaMKII,kinetics/mGluRAntag,PLCbeta,PLA2,PKC,PIP2,temp_PIP2,IP3,kinetics/EGFR,kinetics/Sos	
+modelLookup	MAPK_p_p:MAPK/MAPK_p_p,Ca:Ca/Ca	
 scoringFormula	abs((expt-sim)/(expt+sim+1e-9))	
 itemstodelete	dephos_clus_S6K,dephos_S6K,Gab1,PI3K_basal,PI3K,PIP3,PTEN,SHC_p_Grb2_Gab1_PI3K_clx,PLCg_basal,basal_GEF_activity,Ras_GTP_PI3K,dephosp_S6K,bind_Gab1,PI3K_act,basal_PI3K_act,PI3K_bind_Ras_GTP,Dephos_AKTser473,Dephosph_AKTthr308,eEF2thr_56_dephospho,PP2A_4E_BP_p_p,PP2A_4E_BP_p,PP2A_4E_BP,PP2A_4EBP,CaMKIII_bind_CaM_Ca4,PLC_g_p_dephospho,Grb2_bind_SHC,PDK1/S6K_phospho,phospho_thr308,phosp_AKTser473,cluster_phospho_S6K,MAPK_4E_BP_p_p,MAPK_4E_BP_phospho,MEK_phospho,MEKp_phospho,PIP3_AKT_t308_s473,mGluR_barr2_Raf_scaffolding,mGluR_dephosph	
 solver	Runge kutta method (gsl)	
-notes		
+notes	Bhalla1999_Fig4C	
 parameterChange		
 Object	parameter	value
-Ca/Ca	concInit (uM)	0.00008
+Ca/Ca	concInit	0.00008
 Ca/Ca	isBuffered	1
-Phosphatase/MKP_1	concInit (uM)	0.000002
+Phosphatase/MKP_1	concInit	0.000002
 Ras/Ras_act_craf	Kf	24000
 Ras/CaM_bind_GEF	Kf	60000
-MAPK/MAPK	concInit (uM)	0.00036
+MAPK/MAPK	concInit	0.00036
 MAPK/MAPKK_p_p/MAPKKthr	kcat	0.15
 MAPK/MAPKK_p_p/MAPKKtyr	kcat	0.15
 MAPK/Raf_p_GTP_Ras/Raf_p_GTP_Ras.1	kcat	0.105
@@ -147,16 +146,16 @@ Sos/SHC_p_dephospho	Kf	0.00167
 Sos/SHC_p.Sos.Grb2/Sos.Ras_GEF	kcat	0.02
 PKC/PKC_active/PKC_act_raf	Km	0.0697
 Ras/CaM_GEF/CaM_GEF_act_Ras	kcat	0.02
-PKC/PKC_basal_p	concInit (uM)	0
-MAPK/craf_1	concInit (uM)	0.0002
-MAPK/MAPKK	concInit (uM)	0.00018
-Phosphatase/PP2A	concInit (uM)	0.00012
-Phosphatase/PPhosphatase2A	concInit (uM)	0.000224
-PLCbeta/PIP2	concInit (uM)	0.01
-PLCbeta/DAG	isBuffered	0
-PLA2/Arachidonic_Acid	isBuffered	0
-PLA2/Arachidonic_Acid	concInit (uM)	0
-PLCbeta/DAG	concInit (uM)	0
-PLC_g/PLC_g	concInit (uM)	0.00082
-Ras/GAP	concInit (uM)	0.000002
-Ras/GDP_Ras	concInit (uM)	0.0002
+PKC/PKC_basal_p	concInit	0
+MAPK/craf_1	concInit	0.0002
+MAPK/MAPKK	concInit	0.00018
+Phosphatase/PP2A	concInit	0.00012
+Phosphatase/PPhosphatase2A	concInit	0.000224
+PIP2	concInit	0.01
+DAG	isBuffered	0
+Arachidonic_Acid	isBuffered	0
+Arachidonic_Acid	concInit	0
+DAG	concInit	0
+PLC_g/PLC_g	concInit	0.00082
+Ras/GAP	concInit	0.000002
+Ras/GDP_Ras	concInit	0.0002
