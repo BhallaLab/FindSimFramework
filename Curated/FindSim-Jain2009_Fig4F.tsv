@@ -10,37 +10,37 @@ journal	Biochemistry. 1994
 		
 		
 Experiment context		
+exptType	DoseResponse	
 species		
 cell-types		
-temperature (Celsius)		
-Include pathway	Translation_initiation,40S,43S	
-details	JainFig4F	
+temperature-in-Celsius		
+includePathway	Translation_initiation,40S,43S	
+details		
 notes		
 		
 		
 Stimuli		
 timeUnits	sec	
 quantityUnits	nM	
-molecules	40S	
+entities	40S	
 field	conc	
 Data		
-settleTime	2400	
+Time	Value	
 		
 		
 		
 Readouts		
-readoutType	DoseResponse	
 timeUnits	sec	
 quantityUnits	nM	
-useRatio	FALSE	
 useXlog	FALSE	
 useYlog	FALSE	
-ratioReferenceTime	0	
-ratioReferenceEntity		
-molecules	43S	
-experimentalReadout	conc	
-useSum	FALSE	
 useNormalization	FALSE	
+settleTime	2400	
+ratioReferenceTime	0	
+ratioReferenceEntities		
+ratioReferenceDose	0	
+entities	43S	
+field	conc	
 Data		
 Dose	Value	stderr
 6.8	3.61	0
@@ -53,19 +53,17 @@ Dose	Value	stderr
 		
 		
 Model mapping		
-modelSource	DOQCS	
-fileName		
+modelSource	Local path	
+fileName	models/synSynth7.g	
 citationId		
 citation		
 authors		
-modelSubset	Translation_initiation,kinetics/40S,43S_complex	
-stimulusMolecules	40S/40S	
-readoutMolecules	43Scomplex	
-referenceMolecule		
+modelSubset	Translation_initiation,kinetics/_40S,_43S_complex	
+modelLookup	40S:_40S/_40S,43S:_43Scomplex	
 scoringFormula	abs((expt-sim)/(expt+sim+1e-9))	
 itemstodelete		
 solver	Runge kutta method (gsl)	
-notes		
+notes	Jain2009_Fig4F	
 parameterChange		
 Object	parameter	Value
 eIF4F_mRNA_clx	concInit	0.0015
